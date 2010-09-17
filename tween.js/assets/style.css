@@ -3,6 +3,11 @@ body {
 	font-family: Helvetica, Arial, sans; 
 }
 
+	a {
+		text-decoration: none;
+		color: #333;
+	}
+
 	h2 {
 		font-weight: normal;
 	}
