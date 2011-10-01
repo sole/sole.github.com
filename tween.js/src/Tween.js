@@ -4,6 +4,8 @@
  * @author Robert Eisele / http://www.xarg.org
  * @author Philippe / http://philippe.elsass.me
  * @author Robert Penner / http://www.robertpenner.com/easing_terms_of_use.html
+ * @author Paul Lewis / http://www.aerotwist.com/
+ * @author lechecacharro
  */
 
 var TWEEN = TWEEN || ( function () {
@@ -30,6 +32,18 @@ var TWEEN = TWEEN || ( function () {
 
 		},
 
+		getAll: function() {
+
+			return tweens;
+
+		},
+
+		removeAll: function() {
+
+			tweens = [];
+
+		},
+
 		remove: function ( tween ) {
 
 			i = tweens.indexOf( tween );
@@ -42,10 +56,10 @@ var TWEEN = TWEEN || ( function () {
 
 		},
 
-		update: function () {
+		update: function (_time) {
 
 			i = 0; tl = tweens.length;
-			time = new Date().getTime();
+			var time = _time || new Date().getTime();
 
 			while ( i < tl ) {
 
@@ -61,8 +75,6 @@ var TWEEN = TWEEN || ( function () {
 				}
 
 			}
-
-			return "test";
 
 		}
 
@@ -111,11 +123,11 @@ TWEEN.Tween = function ( object ) {
 
 	};
 
-	this.start = function () {
+	this.start = function (_time) {
 
 		TWEEN.add( this );
 
-		_startTime = new Date().getTime() + _delayTime;
+		_startTime = _time ? _time + _delayTime : new Date().getTime() + _delayTime;
 
 		for ( var property in _valuesEnd ) {
 
