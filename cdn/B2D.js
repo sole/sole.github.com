@@ -258,7 +258,7 @@ B2D.Shortcuts.createJoint = function( params ) {
 	var world = params.world,
 		body1 = params.body1,
 		body2 = params.body2,
-		jointClass = params.class || B2D.RevoluteJointDef,
+		jointClass = params.klass || B2D.RevoluteJointDef,
 		def = new jointClass();
 
 	if( jointClass == B2D.RevoluteJointDef ) {
